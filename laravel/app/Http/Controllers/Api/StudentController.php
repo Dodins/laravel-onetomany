@@ -11,7 +11,9 @@ class StudentController extends Controller
 {
     public function index()
     {
-        return Student::with('subjects')->get();
+        $students = Student::with('subjects')->get();
+
+        return response()->json($students);
     }
 
     public function store(Request $request)
@@ -19,7 +21,8 @@ class StudentController extends Controller
         $student = Student::create($request->all());
 
         $student->subjects()->createMany(
-            $request->input('subjects', []));
+            $request->input('subjects', [])
+        );
 
         return response('Created Successfully!');
     }
@@ -68,5 +71,4 @@ class StudentController extends Controller
         $student->delete();
         return response('Deleted Succesfully!');
     }
-
 }

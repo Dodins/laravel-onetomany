@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
-            $table->bigInteger('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->string('author');
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
         });
     }
 

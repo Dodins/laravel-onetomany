@@ -8,13 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-    protected $fillable = 
+    protected $fillable =
     [
         'title',
+        'author',
         'student_id'
     ];
 
-    public function student(){
+    public function students()
+    {
         return $this->hasOne(Student::class);
     }
+
+    
 }
