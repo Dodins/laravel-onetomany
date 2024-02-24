@@ -11,7 +11,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::with('subjects')->get();
+        $students = Student::with('subjects')->with('books')->get();
 
         return response()->json($students);
     }
@@ -29,7 +29,9 @@ class StudentController extends Controller
 
     public function show($id)
     {
-        return Student::with('subjects')->findOrFail($id);
+        return Student::with('subjects')
+            ->with('books')
+            ->findOrFail($id);
     }
 
     public function update(Request $request, $id)

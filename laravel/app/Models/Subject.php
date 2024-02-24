@@ -12,7 +12,8 @@ class Subject extends Model
     protected $fillable = 
     [
         'code',
-        'title'
+        'title',
+        "student_id"
     ];
 
     public function student()
